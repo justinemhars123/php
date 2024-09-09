@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<?php
+
+$inventory = [
+    [
+        "name" => "Laptop",
+        "category" => "Electronics",
+        "stock" => 12
+    ],
+    [
+        "name" => "Shampoo",
+        "category" => "Cosmetics",
+        "stock" => 50
+    ],
+    [
+        "name" => "Notebook",
+        "category" => "Stationery",
+        "stock" => 30
+    ]
+];
+
+    foreach ($inventory as $product) {
+        echo "{$product['name']} (Category: {$product['category']}) - Stock: {$product['stock']}<br>";
+    }
+
+
+$new_product = [
+    "name" => ucfirst("pen"),
+    "category" => "Stationery",
+    "stock" => 100
+];
+$inventory[] = $new_product;
+
+echo "Adding new product: {$new_product['name']} (Category: {$new_product['category']}) - Stock: {$new_product['stock']}<br>";
+
+
+$product_found = false;
+foreach ($inventory as &$product) {
+    if (strtolower($product['name']) == "laptop") {
+        $product['stock'] = 20;
+        $product_found = true;
+        echo "Updating stock for Laptop...<br>";
+        break;
+    }
+}
+if (!$product_found) {
+    echo "Product 'Laptop' not found.";
+}
+
+foreach ($inventory as $product) {
+    
+ 
+
+    echo "<br>{$product['name']} (Category: {$product['category']}) - Stock: {$product['stock']}";
+}
+
+
+?>
+</body>
+</html>
